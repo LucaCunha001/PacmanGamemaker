@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"align_axis",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"align_axis",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
