@@ -1,9 +1,17 @@
+enum TitleState
+{
+    LOGO,
+    GHOSTS,
+    DEMO
+}
+
 enum GameState
 {
     PLAYING,
     LEVEL_COMPLETE,
     DYING,
-    RESPAWN
+    RESPAWN,
+    GAME_OVER
 }
 
 enum Direction {

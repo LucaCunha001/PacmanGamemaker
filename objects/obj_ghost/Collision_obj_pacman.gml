@@ -28,5 +28,6 @@ if (mode != GhostMode.FRIGHTHEN &&
 {
     global.game_state = GameState.DYING;
     global.death_timer = 60;
+	instance_destroy(obj_ghost_generator);
 	audio_stop_all();
 }

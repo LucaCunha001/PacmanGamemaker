@@ -54,3 +54,14 @@ function can_turn(cx, cy, dir, is_ghost = true)
         is_ghost
     );
 }
+
+function ghost_can_go_up(tile_x, tile_y)
+{
+    if ((tile_x == 12 || tile_x == 15) &&
+        (tile_y == 11 || tile_y == 23))
+    {
+        return false;
+    }
+
+    return true;
+}

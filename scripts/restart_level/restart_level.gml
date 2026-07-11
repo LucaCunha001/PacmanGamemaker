@@ -9,7 +9,7 @@ function restart_level() {
 	global.spawned_fruit_1 = false;
 	global.spawned_fruit_2 = false;
 	global.mode_timer = 0;
-	global.mode_index = 0;
+	global.mode_index = -1;
 	global.current_mode = GhostMode.SCATTER;
 	
 	alarm[0] = 120;

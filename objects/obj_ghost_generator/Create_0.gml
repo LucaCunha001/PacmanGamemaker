@@ -16,7 +16,7 @@ var ghosts_info = [
 		"color": #00FFFF,
 		"looking": Direction.UP,
 		"house_timer": 5,
-		"scatter_x": 0,
+		"scatter_x": room_width - 1,
 		"scatter_y": room_height - 1
 	},
 	{
@@ -36,7 +36,7 @@ var ghosts_info = [
 		"color": #FFB852,
 		"looking": Direction.UP,
 		"house_timer": 8,
-		"scatter_x": room_width - 1,
+		"scatter_x": 0,
 		"scatter_y": room_height
 	}
 ];
@@ -50,6 +50,7 @@ array_foreach(ghosts_info, function(info, index) {
 	ghost.current_timer = ghost.house_timer;
 	ghost.scatter_x = info[$ "scatter_x"];
 	ghost.scatter_y = info[$ "scatter_y"];
+	if (ghost.name == "Blinky") ghost.state = GhostState.MOVING;
 });
 
 any_fright = false;

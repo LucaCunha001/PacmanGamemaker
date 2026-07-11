@@ -32,12 +32,12 @@ ghost_move = function(center_x, center_y, tile_x, tile_y, cx, cy) {
 	
 	switch (mode)
 	{
-		case GhostMode.SCATTER:
-		    choose_direction(tile_x, tile_y, scatter_x, scatter_y);
-		    break;
-
 		case GhostMode.CHASE:
 		    choose_direction(tile_x, tile_y, target_x, target_y);
+		    break;
+			
+		case GhostMode.SCATTER:
+		    choose_direction(tile_x, tile_y, scatter_x, scatter_y);
 		    break;
 
 		case GhostMode.EATEN:
@@ -75,8 +75,11 @@ ghost_move = function(center_x, center_y, tile_x, tile_y, cx, cy) {
 		        var px = (tile_x + dir_x(dir)) * TILE_SIZE + TILE_CENTER;
 		        var py = (tile_y + dir_y(dir)) * TILE_SIZE + MAZE_OFFSET_Y + TILE_CENTER;
 
-		        if (!maze_is_wall(px, py, true))
-		            array_push(possible, dir);
+		        if (can_turn(px, py, dir, true)) {
+					if (dir != Direction.UP || ghost_can_go_up(tile_x, tile_y)) {
+						array_push(possible, dir);
+					}
+				}
 		    }
 
 		    if (array_length(possible) > 0)

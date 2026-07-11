@@ -56,15 +56,20 @@ switch (global.game_state)
         break;
 	
 	case GameState.PLAYING:
+		global.high_score = max(global.score, global.high_score);
+		
 		if (global.pellet_count >= global.pellet_total) {
 		    global.game_state = GameState.LEVEL_COMPLETE;
 		    level_end_timer = 240;
+			audio_stop_all();
 		}
 		
 		if (global.mode_timer > 0)
 		{
 		    global.mode_timer--;
 		}
+
+		show_debug_message(global.mode_index);
 
 		if (global.mode_timer == 0)
 		{
@@ -87,6 +92,14 @@ switch (global.game_state)
 		    }
 			show_debug_message("Mudando current_mode para: " + string(global.current_mode));
 		}
+		
+		if (!global.extra_life_given && global.score >= 10000) {
+			global.extra_life_given = true;
+			global.lives++;
+
+			audio_play_sound(snd_extend, 10, false);
+		}
+		
 		break;
 	
 	case GameState.DYING:

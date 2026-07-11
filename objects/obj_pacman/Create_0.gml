@@ -14,4 +14,5 @@ depth--;
 start_death_animation = function() {
 	instance_create_depth(x, y, depth, obj_pacman_death);
 	instance_destroy();
+	if (global.demo_recording) demo_stop_record();
 }

@@ -23,6 +23,10 @@ function choose_direction(tile_x, tile_y, target_x, target_y)
 
         var px = next_tile_x * TILE_SIZE + TILE_CENTER;
         var py = next_tile_y * TILE_SIZE + MAZE_OFFSET_Y + TILE_CENTER;
+		
+		if (dir == Direction.UP) {
+			if (!ghost_can_go_up(tile_x, tile_y)) continue;
+		}
 
         if (!can_turn(
 		    tile_x * TILE_SIZE + TILE_CENTER,

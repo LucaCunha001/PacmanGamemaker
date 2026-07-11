@@ -4,11 +4,11 @@ if (image_index == 0 && timer > 0) {
 
 timer++;
 
-if (timer == 60) {
+if (timer == 80) {
 	audio_stop_sound(death_0);
 }
 
-if (timer > 60 && !audio_is_playing(snd_death_1) && death_1_count < 2) {
+if (timer > 80 && !audio_is_playing(snd_death_1) && death_1_count < 2) {
 	audio_play_sound(snd_death_1, 20, false);
 	death_1_count++;
 }
@@ -17,5 +17,14 @@ if (timer > 180 &&
 	!audio_is_playing(snd_death_1) &&
 	global.game_state != GameState.RESPAWN) {
 	global.game_state = GameState.RESPAWN;
-	restart_level();
+	global.lives--;
+
+	if (global.lives <= 0)
+	{
+	    instance_create_depth(room_width/2, 163, -5, obj_gameover_text);
+	}
+	else
+	{
+	    restart_level();
+	}
 }

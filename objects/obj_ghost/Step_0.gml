@@ -1,10 +1,10 @@
-if (global.game_state != GameState.PLAYING)
-    exit;
-
-if (global.freeze_timer > 0 && mode != GhostMode.EATEN && state != GhostState.IN_HOUSE) {
+if (global.freeze_timer > 0 && mode != GhostMode.EATEN) {
 	image_speed = 0;
     exit;
 }
+
+if (global.game_state != GameState.PLAYING)
+    exit;
 
 if (!initialized) exit;
 if (alarm[0] > 0 && mode == GhostMode.EATEN) exit;

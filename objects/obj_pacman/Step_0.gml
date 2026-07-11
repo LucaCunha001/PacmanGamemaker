@@ -3,6 +3,22 @@ if (keyboard_check(vk_right)) wanted_direction = Direction.RIGHT;
 if (keyboard_check(vk_up))    wanted_direction = Direction.UP;
 if (keyboard_check(vk_down))  wanted_direction = Direction.DOWN;
 
+if (global.demo_recording)
+{
+    var last_dir = -1;
+
+    if (wanted_direction != last_dir)
+    {
+        last_dir = wanted_direction;
+
+        array_push(global.demo_events,
+        {
+            frame: global.demo_frame,
+            dir: wanted_direction
+        });
+    }
+}
+
 if (global.game_state != GameState.PLAYING) {
 	image_speed = 0;
 	image_index = 0;
@@ -42,3 +58,8 @@ if (can_walk(nx, ny, false))
 }
 
 check_tunnel();
+
+if (global.demo_recording)
+{
+    global.demo_frame++;
+}

@@ -1,6 +1,6 @@
 {
   "$GMFont":"",
-  "%Name":"fnt_main",
+  "%Name":"fnt_arcade",
   "AntiAlias":0,
   "applyKerning":0,
   "ascender":9,
@@ -116,7 +116,7 @@
   "last":0,
   "lineHeight":10,
   "maintainGms1Font":false,
-  "name":"fnt_main",
+  "name":"fnt_arcade",
   "parent":{
     "name":"Fontes",
     "path":"folders/Fontes.yy",
