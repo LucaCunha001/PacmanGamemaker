@@ -7,7 +7,7 @@ global.until_mute_chomp = 0;
 looking_at = Direction.LEFT;
 wanted_direction = looking_at;
 
-spd = 1;
+spd = get_level_speed("pacman");
 
 depth--;
 

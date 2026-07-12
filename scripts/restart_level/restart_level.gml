@@ -12,5 +12,7 @@ function restart_level() {
 	global.mode_index = -1;
 	global.current_mode = GhostMode.SCATTER;
 	
+	update_mode_table();
+	
 	alarm[0] = 120;
 }

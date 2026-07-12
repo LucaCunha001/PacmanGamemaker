@@ -11,7 +11,15 @@ enum GameState
     LEVEL_COMPLETE,
     DYING,
     RESPAWN,
-    GAME_OVER
+    GAME_OVER,
+    INTERMISSION
+}
+
+enum IntermissionState
+{
+    START,
+    PLAYING,
+    END
 }
 
 enum Direction {

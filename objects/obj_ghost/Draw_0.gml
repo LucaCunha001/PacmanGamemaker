@@ -20,13 +20,4 @@ else
     draw_sprite(spr_eyes, looking_at, x + 1, y + 1);
 }
 
-draw_set_colour(image_blend);
-switch (mode) {
-	case GhostMode.CHASE:
-		draw_point(target_x, target_y);
-		break;
-	case GhostMode.EATEN:
-		draw_point(house_exit_cx, house_exit_cy);
-		break;
-}
 draw_set_colour(c_white);

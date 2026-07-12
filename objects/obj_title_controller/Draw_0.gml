@@ -35,27 +35,38 @@ switch (state)
         break;
 
     case TitleState.GHOSTS:
+	    draw_set_halign(fa_center);
+		draw_text(room_width / 2, 20, "CHARACTER / NICKNAME");
 
-        draw_text(room_width / 2, 20, "CHARACTER / NICKNAME");
+		draw_set_halign(fa_left);
 
-        draw_set_colour(c_red);
-        draw_text(room_width / 2, 60, "SHADOW   BLINKY");
+		var text_x = room_width / 2 - 66;
+		var sprite_x = text_x - 30;
 
-        draw_set_colour(#ffb8ff);
-        draw_text(room_width / 2, 90, "SPEEDY    PINKY");
+		var ghosts = [
+		    { color: #FF0000, text: "-SHADOW   \"BLINKY\"" },
+		    { color: #FFB8FF, text: "-SPEEDY    \"PINKY\"" },
+		    { color: #00FFFF, text: "-BASHFUL    \"INKY\"" },
+		    { color: #FFB852, text: "-POKEY     \"CLYDE\"" }
+		];
 
-        draw_set_colour(c_aqua);
-        draw_text(room_width / 2, 120, "BASHFUL    INKY");
+		for (var i = 0; i < array_length(ghosts); i++)
+		{
+		    var g = ghosts[i];
+		    var y_ = 60 + i * 30;
 
-        draw_set_colour(c_orange);
-        draw_text(room_width / 2, 150, "POKEY     CLYDE");
+		    draw_sprite_ext(spr_ghost_normal, 0, sprite_x, y_, 1, 1, 0, g.color, 1);
 
-        draw_set_colour(c_white);
+		    draw_sprite(spr_eyes, 1, sprite_x + 1, y_ + 1);
 
-        break;
+		    draw_set_colour(g.color);
+		    draw_text(text_x, y_, g.text);
+		}
+	    draw_set_colour(c_white);
+
+	break;
 
     case TitleState.DEMO:
-
         draw_text(room_width / 2, 12, "DEMONSTRATION");
 
         break;

@@ -1,4 +1,4 @@
-score = 10;
+pellet_score = 10;
 image_blend = #E8A484;
 image_xscale = 2;
 image_yscale = 2;

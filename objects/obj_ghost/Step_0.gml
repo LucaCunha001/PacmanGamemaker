@@ -14,6 +14,30 @@ if (flash_timer > 0)
     flash_timer--;
 }
 
+if (name == "Blinky" &&
+    mode != GhostMode.EATEN &&
+    mode != GhostMode.FRIGHTHEN)
+{
+    var lvl = get_level_data();
+
+    var elroy_stage = 0;
+
+    if (global.pellet_count >= 244 - lvl[7])
+        elroy_stage = 2;
+    else if (global.pellet_count >= 244 - lvl[5])
+        elroy_stage = 1;
+
+
+    if (elroy_stage > 0)
+    {
+        current_speed = get_level_speed(
+            elroy_stage == 1 ? "elroy1" : "elroy2"
+        );
+
+        mode = GhostMode.CHASE;
+    }
+}
+
 image_speed = 0.2;
 
 if (mode == GhostMode.EATEN) {
@@ -21,8 +45,8 @@ if (mode == GhostMode.EATEN) {
 	y = floor(y);
 }
 
-var cx = x + sprite_width * 0.5;
-var cy = y + sprite_height * 0.5;
+var cx = (current_speed != spd ? x : round(x)) + sprite_width * 0.5;
+var cy = (current_speed != spd ? y : round(y)) + sprite_height * 0.5;
 
 var tile_x = floor(cx / TILE_SIZE);
 var tile_y = floor((cy - MAZE_OFFSET_Y) / TILE_SIZE);
@@ -36,7 +60,7 @@ if (mode == GhostMode.EATEN) margem = 4;
 current_speed = mode == GhostMode.FRIGHTHEN ? fright_spd : spd;
 if ((x <= 43 || x >= 180) &&
 	(y == 133)) {
-	current_speed = fright_spd;
+	current_speed = tunel_spd;
 }
 if (mode == GhostMode.EATEN) {
 	current_speed = eaten_spd;
@@ -125,13 +149,17 @@ switch (state)
 
         if (looking_at == Direction.UP)
         {
-            if (y == 128)
+            if (abs(y - 128) < current_speed) {
+				y = 128;
                 looking_at = Direction.DOWN;
+			}
         }
         else
         {
-            if (y == 137)
+            if (abs(y - 137) < current_speed) {
+				y = 137;
                 looking_at = Direction.UP;
+			}
         }
 
         y += dir_y(looking_at) * current_speed;
@@ -209,7 +237,7 @@ switch (state)
 				}
 		    } else {
 			    state = GhostState.IN_HOUSE;
-		        mode = GhostMode.SCATTER;
+		        mode = global.current_mode;
 			    current_timer = house_timer;
 				current_speed = spd;
 				looking_at = Direction.UP;

@@ -3,6 +3,7 @@ y = 0;
 
 instance_create_depth(0, 0, 0, obj_gravador);
 
+global.base_speed = 1;
 global.pellet_sound = 0;
 global.score = 0;
 global.freeze_timer = 0;
@@ -22,6 +23,7 @@ timer = 0;
 
 generate_maze(spr_maze_base);
 instance_create_depth(0, 0, 0, obj_game_controller);
+update_mode_table();
 
 musicinstance = audio_play_sound(snd_intromusic, 20, false);
 

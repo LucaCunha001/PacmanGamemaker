@@ -47,10 +47,17 @@ switch (global.game_state)
 
         if (level_end_timer <= 0) {
 			instance_destroy(obj_pacman);
-            global.level++;
 			
-			restart_level();
-			recreate_pellets();
+		    if (global.level == 2 || global.level == 5 || global.level == 9)
+		    {
+		        global.state = GameState.INTERMISSION;
+		        instance_create_depth(0, 0, -6, obj_intermission_controller);
+		    }
+		    else
+		    {
+		        restart_level();
+				recreate_pellets();
+		    }
         }
 
         break;
@@ -68,8 +75,6 @@ switch (global.game_state)
 		{
 		    global.mode_timer--;
 		}
-
-		show_debug_message(global.mode_index);
 
 		if (global.mode_timer == 0)
 		{
@@ -90,10 +95,9 @@ switch (global.game_state)
 		            looking_at = opposite_dir(looking_at);
 		        }
 		    }
-			show_debug_message("Mudando current_mode para: " + string(global.current_mode));
 		}
 		
-		if (!global.extra_life_given && global.score >= 10000) {
+		if (!global.extra_life_given && global.score >= 10_000) {
 			global.extra_life_given = true;
 			global.lives++;
 

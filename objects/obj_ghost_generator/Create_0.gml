@@ -16,8 +16,8 @@ var ghosts_info = [
 		"color": #00FFFF,
 		"looking": Direction.UP,
 		"house_timer": 5,
-		"scatter_x": room_width - 1,
-		"scatter_y": room_height - 1
+		"scatter_x": room_width - 9,
+		"scatter_y": room_height - 9
 	},
 	{
 		"name": "Pinky",
@@ -26,8 +26,8 @@ var ghosts_info = [
 		"color": #FFB8FF,
 		"looking": Direction.DOWN,
 		"house_timer": 2,
-		"scatter_x": 0,
-		"scatter_y": 0
+		"scatter_x": 4,
+		"scatter_y": 24
 	},
 	{
 		"name": "Clyde",
@@ -36,8 +36,8 @@ var ghosts_info = [
 		"color": #FFB852,
 		"looking": Direction.UP,
 		"house_timer": 8,
-		"scatter_x": 0,
-		"scatter_y": room_height
+		"scatter_x": 4,
+		"scatter_y": room_height - 9
 	}
 ];
 

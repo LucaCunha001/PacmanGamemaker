@@ -18,7 +18,9 @@ switch (state)
 
         if (keyboard_check_pressed(vk_enter))
         {
+			global.show_debug = keyboard_check(vk_f2);
             room_goto(room_game);
+            // room_goto(room_intermission);
             exit;
         }
 

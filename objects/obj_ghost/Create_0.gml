@@ -19,8 +19,9 @@ flash_timer = 0;
 flash_interval = 15;
 flash_count = 10;
 
-spd = 1;
-fright_spd = 0.5;
+spd = get_level_speed("ghost");
+fright_spd = get_level_speed("frightened");
+tunel_spd = get_level_speed("tunnel");
 eaten_spd = 4;
 current_speed = spd;
 

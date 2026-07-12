@@ -1,4 +1,7 @@
 function recreate_pellets() {
+	with (obj_pellet) {
+		instance_destroy();
+	}
 	global.pellet_total = 0;
 	global.pellet_count = 0;
 	

@@ -4,5 +4,5 @@ function spawn_fruit()
 	var info = get_level_fruit(global.level);
     fruit.fruit = info[$ "sprite"];
 	fruit.image_index = fruit.fruit;
-    fruit.score = info[$ "score"];
+    fruit.fruit_score = info[$ "score"];
 }
